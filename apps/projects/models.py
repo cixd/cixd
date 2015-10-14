@@ -85,8 +85,8 @@ class Grant(models.Model):
     open_date = models.DateField(default=datetime.date.today, help_text="이 날짜 포함, 그 이후로 공개가 됩니다.")
 
     class Meta:
-        verbose_name = "Grant"
-        verbose_name_plural = "Grants"
+        verbose_name = "Research Grant"
+        verbose_name_plural = "Research Grants"
 
     def __unicode__(self):
         return '%s (%s)' % (self.title, self.sponsor_name)
