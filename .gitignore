@@ -67,8 +67,4 @@ db.*
 .DS_Store
 
 # Uploaded files
-media/main/
-media/news/
-media/people/
-media/projects/
-media/uploads/
+media/*
