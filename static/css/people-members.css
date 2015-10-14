@@ -1,0 +1,100 @@
+.section-title{
+    text-transform: none;
+}
+
+/*
+ * Members list
+ */
+
+.members-list{
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
+.member-item{
+    display: block;
+    width: 100%;
+    height: 190px;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.member-item:hover img{
+    opacity: 1;
+}
+
+.member-image{
+    width: calc(30% - 15px);
+    height: 100%;
+    margin-left: 15px;
+    background: #cfcfcf;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.member-image-wrapper{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -250px;
+}
+
+.member-image img{
+    height: 50%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 125px;
+    opacity: 0.7;
+}
+
+.member-info{
+    width: calc(70% - 15px);
+    height: 100%;
+    background: #fff;
+    float: left;
+    padding: 25px 15px;
+}
+
+.member-name{
+    font-size: 20px;
+    line-height: 14px;
+    color: #595959;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.member-name span{
+    color: #f78364;
+    margin-right: 8px;
+    font-weight: 600;
+    text-transform: none;
+}
+
+.member-email{
+    font-size: 16px;
+    line-height: 15px;
+    color: #595959;
+    margin-top: 8px;
+    margin-bottom: 22px;
+}
+
+.member-email::after{
+    display: block;
+    content: "";
+    width: 15px;
+    height: 2px;
+    background: #00cbb5;
+    margin-top: 25px;
+}
+
+.member-degree{
+    font-size: 14px;
+    line-height: 12px;
+    color: #8c8c8c;
+    margin-bottom: 8px;
+}

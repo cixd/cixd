@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- META DATA -->
+        <!-- bootstrap 3.3.5 -->
+        <meta charset="urf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Creative Interaction Design Lab.">
+        <meta name="keywords" content="cixd, design, lab, kaist, industrial design">
+        <meta name="author" content="Jonghyuk Jung, http://jonghyuk.info/">
+
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="/static/js/plugin/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="/static/js/plugin/jquery-ui-1.11.4-easing.min.js"></script>
+        <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+        {% block script %}{% endblock %}
+
+        <!-- STTLESHEETS -->
+        <!-- google fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/layout.css">
+        {% block stylesheet %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="side col-lg-2 col-md-2">
+                    <h1 class="side-logo">
+                        <a href="/" class="nav-logo-img">cixd</a>
+                        <span>
+                            creative interaction design lab.
+                        </span>
+                    </h1>
+                    <ul class="side-nav">
+                        <li class="side-nav-about {% block nav-about %}{% endblock %}">
+                            <a href="/about">about</a>
+                        </li>
+                        <li class="side-nav-people {% block nav-people %}{% endblock %}">
+                            <a href="/people">people</a>
+                            <div class="side-nav-people-nav">
+                                <a href="/people/members" class="{% block nav-people-members %}{% endblock %}">members</a>
+                                <a href="/people/alumni" class="{% block nav-people-alumni %}{% endblock %}">alumni</a>
+                            </div>
+                        </li>
+                        <li class="side-nav-projects {% block nav-projects %}{% endblock %}">
+                            <a href="/projects">projects</a>
+                            <div class="side-nav-project-nav">
+                                <a href="/projects" class="{% block nav-projectlist %}{% endblock %}">project list</a>
+                                <a href="/projects/researchgrants" class="{% block nav-researchgrants %}{% endblock %}">research grants</a>
+                            </div>
+                        </li>
+                        <li class="side-nav-publication {% block nav-publication %}{% endblock %}">
+                            <a href="/publication">publication</a>
+                            <div class="side-nav-publication-nav">
+                                <a href="/publication/journal_conference" class="{% block nav-journalconference %}{% endblock %}">journals & conferences</a>
+                                <a href="/publication/others" class="{% block nav-others %}{% endblock %}">others</a>
+                                <a href="/publication/awards" class="{% block nav-awards %}{% endblock %}">awards</a>
+                            </div>
+                        </li>
+                        <li class="side-nav-news {% block nav-news %}{% endblock %}">
+                            <a href="/news">news</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content col-lg-10 col-md-10 col-lg-offset-2 col-md-offset-2">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

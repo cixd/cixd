@@ -1,2 +1,2 @@
 # cixd
-CIxD Website Development and Design
+CIxD webpage development &amp; design

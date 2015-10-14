@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block script %}
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/css/people-alumni.css">
+{% endblock %}
+
+{% block nav-people %}sel{% endblock %}
+{% block nav-people-alumni %}sel{% endblock %}
+
+{% block content %}
+<div class="row section">
+    <h3 class="section-title">Ph.D. DEGREE</h3>
+    <div class="section-content">
+        <ul class="alumni-list">
+            {% for phd in phds %}
+            <li class="alumni-item">
+                <div class="alumni-info">
+                    <div class="alumni-name">{{ phd.name_en }}</div>
+                    <div class="alumni-where">{{ phd.current }}</div>
+                    {% for thesis in phd.theses.all %}
+                    <div class="alumni-thesis">
+                        <a href="{{ thesis.url }}" target="blank">{{ thesis.title }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row section">
+    <h3 class="section-title">Master's DEGREE</h3>
+    <div class="section-content">
+        <ul class="alumni-list">
+            {% for master in masters %}
+            <li class="alumni-item">
+                <div class="alumni-info">
+                    <div class="alumni-name">{{ master.name_en }}</div>
+                    <div class="alumni-where">{{ master.current }}</div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

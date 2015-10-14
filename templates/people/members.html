@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block script %}
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/css/people-members.css">
+{% endblock %}
+
+{% block nav-people %}sel{% endblock %}
+{% block nav-people-members %}sel{% endblock %}
+
+{% block content %}
+<div class="row section">
+    <h3 class="section-title">PROFESSOR</h3>
+    <div class="section-content">
+        <ul class="members-list">
+            <li class="member-item">
+                <div class="member-image">
+                    <div class="member-image-wrapper">
+                        {% if professor.image %}
+                        <img src="{{ professor.image.url }}">
+                        {% else %}
+                        <img src="/static/res/img_no_image.png">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">{{ professor.name_en }}</div>
+                    <div class="member-email">{{ professor.email }}</div>
+                    {% for degree in professor.degrees.all %}
+                    <div class="member-degree">{{ degree.degree }}, {{ degree.department }}, {{ degree.university }}</div>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row section">
+    <h3 class="section-title">Ph.D. STUDENTS</h3>
+    <div class="section-content">
+        <ul class="members-list">
+            {% for student in phd_students %}
+            <li class="member-item">
+                <div class="member-image">
+                    <div class="member-image-wrapper">
+                        {% if student.image %}
+                        <img src="{{ student.image.url }}">
+                        {% else %}
+                        <img src="/static/res/img_no_image.png">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">{{ student.name_en }}</div>
+                    <div class="member-email">{{ student.email }}</div>
+                    {% for degree in student.degrees.all %}
+                    <div class="member-degree">{{ degree.degree }}, {{ degree.where }}</div>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row section">
+    <h3 class="section-title">MASTER STUDENTS</h3>
+    <div class="section-content">
+        <ul class="members-list">
+            {% for student in m_students %}
+            <li class="member-item">
+                <div class="member-image">
+                    <div class="member-image-wrapper">
+                        {% if student.image %}
+                        <img src="{{ student.image.url }}">
+                        {% else %}
+                        <img src="/static/res/img_no_image.png">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">{{ student.name_en }}</div>
+                    <div class="member-email">{{ student.email }}</div>
+                    {% for degree in student.degrees.all %}
+                    <div class="member-degree">{{ degree.degree }}, {{ degree.where }}</div>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

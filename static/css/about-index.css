@@ -1,0 +1,183 @@
+/*
+ * Who we are
+ */
+
+.intro-wrapper{
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    padding: 41px 15px 23px 15px;
+    background: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    position: relative;
+    color: #595959;
+}
+
+.intro-wrapper::before{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    background: #00cbb5;
+}
+
+/*
+ * What we pursue in research
+ */
+
+.pursuit-list{
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.pursuit-item{
+    display: block;
+    width: calc(50% - 30px);
+    padding: 25px 15px;
+    float: left;
+    background: #fff;
+    margin: 0 15px;
+}
+
+.pursuit-item-title{
+    font-size: 22px;
+    line-height: 26px;
+    color: #595959;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    letter-spacing: 0.08em;
+}
+.pursuit-item-title::before{
+    display: block;
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: #00cbb5;
+    margin-bottom: 13px;
+    letter-spacing: 0.08em;
+}
+
+.pursuit-item-content{
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    color: #595959;
+    padding: 0;
+    margin: 0;
+    margin-top: 19px;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+}
+
+.pursuit-item-subtitle{
+    font-size: 18px;
+    line-height: 12px;
+    font-weight: 600;
+    color: #00cbb5;
+    text-transform: uppercase;
+    padding-top: 27px;
+    padding-bottom: 10px;
+    margin: 0;
+    position: relative;
+}
+
+.pursuit-item-subtitle::before{
+    display: block;
+    content: "";
+    width: 15px;
+    height: 2px;
+    background: #00cbb5;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pursuit-item-rels{
+    display: block;
+    margin: 0 -15px;
+    padding: 2px 15px;
+    color: #888;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.pursuit-item-rels:hover{
+    color: #f78364;
+}
+
+/*
+ * Becoming cixd members
+ */
+
+.offer-wrapper{
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    padding: 41px 15px 23px 15px;
+    background: #fff;
+    color: #595959;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    position: relative;
+}
+
+.offer-wrapper::before{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    background: #00cbb5;
+}
+
+/*
+ * Contact us
+ */
+
+.contact-wrapper{
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    padding: 41px 15px 23px 15px;
+    background: #fff;
+    color: #595959;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    position: relative;
+}
+
+.contact-wrapper::before{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    background: #00cbb5;
+}
+
+.contact-wrapper b{
+    color: #f78364;
+    font-weight: 600;
+    padding-right: 5px;
+}
+
+.contact-wrapper span{
+    padding-left: 30px;
+}
+
+.contact-wrapper img{
+    margin-top: 25px;
+    width: 100%;
+}

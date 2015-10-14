@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block script %}
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/css/about-index.css">
+{% endblock %}
+
+{% block nav-about %}sel{% endblock %}
+
+{% block content %}
+<div class="row section">
+    <h3 class="section-title">who we are</h3>
+    <div class="section-content">
+        <div class="intro-wrapper">
+            {{ intro.content }}
+        </div>
+    </div>
+</div>
+<div class="row section">
+    <h3 class="section-title">what we pursue in research</h3>
+    <div class="section-content">
+        <ul class="pursuit-list">
+            {% for pursuit in pursuits %}
+            <li class="col-lg-5 col-md-5 pursuit-item">
+                <h4 class="pursuit-item-title">{{ pursuit.title }}</h4>
+                <p class="pursuit-item-content">{{ pursuit.content }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="row section">
+    <h3 class="section-title">becoming cixd members</h3>
+    <div class="section-content">
+        <div class="offer-wrapper">
+            {{ offer.content }}
+        </div>
+    </div>
+</div>
+<div class="row section">
+    <h3 class="section-title">contact us</h3>
+    <div class="section-content">
+        <div class="contact-wrapper">
+            Creative Interaction Design Lab.<br><br>
+            #219, Dept. of Industrial Design, KAIST<br>
+            291 Gwahangno, Yusong-gu, Daejeon 34141, Republic of Korea.<br><br>
+            <b>LAB. TEL</b> +82-42-350-4562<span></span>
+            <b>FAX</b> +82-42-350-4510
+            <img src="/static/res/img_map.png">
+        </div>
+    </div>
+</div>
+{% endblock %}

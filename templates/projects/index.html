@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block script %}
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/css/projects-index.css">
+{% endblock %}
+
+{% block nav-projects %}sel{% endblock %}
+{% block nav-projectlist %}sel{% endblock %}
+
+{% block content %}
+<div class="row section">
+    <h3 class="section-title">our research area</h3>
+    <div class="section-content">
+        <ul class="area-list">
+            {% for area in areas %}
+            <li class="area-item" id="{{ area.title|slugify }}">
+                <h4 class="area-title">{{ area.title }}</h4>
+                <p class="area-content">{{ area.content }}</p>
+                <h4 class="area-subtitle">related projects</h4>
+                <ul class="project-list">
+                    {% for project in area.projects.all %}
+                    <li class="project-item">
+                        <a href="/projects/project/{{ project.title|lower }}">
+                            <div class="project-image-wrapper">
+                            {% if project.thumbnail %}
+                                <img class="project-image" src="{{ project.thumbnail.url }}">
+                            {% else %}
+                                {% with research=project.researches.all|first %}
+                                <img class="project-image" src="{{ research.images.all|first }}">
+                                {% endwith %}
+                            {% endif %}
+                            </div>
+                            <h5 class="project-title">{{ project.title }}</h5>
+                            <p class="project-content">{{ project.content }}</p>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
