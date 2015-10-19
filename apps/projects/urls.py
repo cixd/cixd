@@ -4,6 +4,6 @@ from apps.projects import views as projects
 
 urlpatterns = [
     url(r'^$', projects.index),
-    url(r'^project/(?P<name>.+)$', projects.project),
+    url(r'^list/(?P<name>.+)$', projects.list),
     url(r'^researchgrants/$', projects.grants),
 ]

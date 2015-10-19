@@ -11,7 +11,7 @@
 var Folder = {};
 
 Folder.init = function(){
-    this.buttons = $('.category-title');
+    this.buttons = $('.research-title');
 
     Folder.register();
 };
@@ -21,27 +21,26 @@ Folder.register = function(){
 };
 
 Folder.anchor = function(btn){
-    var group = $(btn).parent().parent();
+    var wrapper = $(btn).parent(),
+        details = $(wrapper).children('.research-details');
 
-    if($(group).hasClass('sel')){
-        Folder.fold(group);
+    if($(btn).hasClass('selected')){
+        Folder.fold(details, btn);
     }else{
-        Folder.unfold(group);
+        Folder.unfold(details, btn);
     }
 };
 
-Folder.fold = function(group){
-    var projects = $(group).children('.project-wrapper');
-
-    $(projects).stop().slideUp(350, "easeInOutQuad", function(){
-        $(group).removeClass('sel');
+Folder.fold = function(details, btn){
+    $(details).stop().slideUp(350, "easeInOutQuad", function(){
+        $(btn).removeClass('selected');
+        $(btn).parent().removeClass('selected');
     });
 };
 
-Folder.unfold = function(group){
-    var projects = $(group).children('.project-wrapper');
-
-    $(projects).stop().slideDown(350, "easeInOutQuad", function(){
-        $(group).addClass('sel');
+Folder.unfold = function(details, btn){
+    $(details).stop().slideDown(350, "easeInOutQuad", function(){
+        $(btn).addClass('selected');
+        $(btn).parent().addClass('selected');
     });
 };

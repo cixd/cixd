@@ -23,7 +23,7 @@
                 <ul class="project-list">
                     {% for project in area.projects.all %}
                     <li class="project-item">
-                        <a href="/projects/project/{{ project.title|lower }}">
+                        <a href="/projects/list/{{ project.title|lower }}">
                             <div class="project-image-wrapper">
                             {% if project.thumbnail %}
                                 <img class="project-image" src="{{ project.thumbnail.url }}">

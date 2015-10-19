@@ -11,7 +11,7 @@ def index(request):
 
     return render(request, 'projects/index.html', qs)
 
-def project(request, name):
+def list(request, name):
     title = name.lower()
     project = Project.objects.get(title__icontains=title)
 
@@ -19,7 +19,7 @@ def project(request, name):
         "project": project
     }
 
-    return render(request, 'projects/project.html', qs)
+    return render(request, 'projects/list.html', qs)
 
 def grants(request):
     today = datetime.date.today()
