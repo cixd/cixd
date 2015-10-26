@@ -171,6 +171,7 @@
     padding-right: 18px;
     background: url(/static/res/btn_open.png) right 50% no-repeat;
     cursor: pointer;
+    text-align: left;
 }
 
 .research-title:hover{

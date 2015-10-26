@@ -28,6 +28,7 @@ class Project(models.Model):
     class Meta:
         verbose_name = "Project"
         verbose_name_plural = "Projects"
+        ordering = ['-start_year', '-end_year']
 
     def __unicode__(self):
         return '%s' % (self.title)
