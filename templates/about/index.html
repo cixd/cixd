@@ -10,6 +10,7 @@
 {% block nav-about %}sel{% endblock %}
 
 {% block content %}
+{% if intro != '' %}
 <div class="row section">
     <h3 class="section-title">who we are</h3>
     <div class="section-content">
@@ -18,12 +19,14 @@
         </div>
     </div>
 </div>
+{% endif %}
+{% if pursuit != '' %}
 <div class="row section">
     <h3 class="section-title">what we pursue in research</h3>
     <div class="section-content">
         <ul class="pursuit-list">
             {% for pursuit in pursuits %}
-            <li class="col-lg-5 col-md-5 pursuit-item">
+            <li class="col-lg-12 col-md-12 pursuit-item">
                 <h4 class="pursuit-item-title">{{ pursuit.title }}</h4>
                 <p class="pursuit-item-content">{{ pursuit.content }}</p>
             </li>
@@ -31,6 +34,8 @@
         </ul>
     </div>
 </div>
+{% endif %}
+{% if offer != ''%}
 <div class="row section">
     <h3 class="section-title">becoming cixd members</h3>
     <div class="section-content">
@@ -39,6 +44,7 @@
         </div>
     </div>
 </div>
+{% endif %}
 <div class="row section">
     <h3 class="section-title">contact us</h3>
     <div class="section-content">

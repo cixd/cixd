@@ -38,11 +38,15 @@
 
 .pursuit-item{
     display: block;
-    width: calc(50% - 30px);
+    width: 100%;
     padding: 25px 15px;
     float: left;
     background: #fff;
     margin: 0 15px;
+}
+
+.pursuit-item:first-child{
+    margin-bottom: 15px;
 }
 
 .pursuit-item-title{
@@ -52,17 +56,19 @@
     font-weight: 600;
     text-transform: uppercase;
     padding: 0;
+    padding-top: 15px;
     margin: 0;
     letter-spacing: 0.08em;
 }
 .pursuit-item-title::before{
-    display: block;
     content: "";
-    width: 15px;
-    height: 15px;
+    display: block;
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 25px;
+    left: 15px;
     background: #00cbb5;
-    margin-bottom: 13px;
-    letter-spacing: 0.08em;
 }
 
 .pursuit-item-content{
