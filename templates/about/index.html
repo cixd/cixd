@@ -11,51 +11,60 @@
 
 {% block content %}
 {% if intro != '' %}
-<div class="row section">
-    <h3 class="section-title">who we are</h3>
-    <div class="section-content">
-        <div class="intro-wrapper">
+<div class="sec-wrapper">
+    <h3 class="sec-title">Who We are</h3>
+    <div class="sec-content sec-intro">
+        <p class="intro-content">
             {{ intro.content }}
-        </div>
+        </p>
     </div>
 </div>
 {% endif %}
 {% if pursuit != '' %}
-<div class="row section">
-    <h3 class="section-title">what we pursue in research</h3>
-    <div class="section-content">
+<div class="sec-wrapper">
+    <h3 class="sec-title">What We Pursue in Research</h3>
+    <div class="sec-content sec-pursuit">
         <ul class="pursuit-list">
             {% for pursuit in pursuits %}
-            <li class="col-lg-12 col-md-12 pursuit-item">
-                <h4 class="pursuit-item-title">{{ pursuit.title }}</h4>
-                <p class="pursuit-item-content">{{ pursuit.content }}</p>
+            <li class="pursuit-item">
+                <h4 class="sec-subtitle pursuit-title">{{ pursuit.title }}</h4>
+                <p class="pursuit-content">{{ pursuit.content }}</p>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
 {% endif %}
-{% if offer != ''%}
-<div class="row section">
-    <h3 class="section-title">becoming cixd members</h3>
-    <div class="section-content">
-        <div class="offer-wrapper">
+{% if offer != '' %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Becoming CIxD Members</h3>
+    <div class="sec-content sec-offer">
+        <p class="offer-content">
             {{ offer.content }}
+        </p>
+    </div>
+</div>
+{% endif %}
+{% if contact != '' %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Contact Us</h3>
+    <div class="sec-content sec-contact">
+        <div class="contact-address">
+            <h4 class="sec-subtitle contact-title">Creative Interaction Design Lab.</h4>
+            <p class="contact-details">
+                {{ contact.building }}<br>
+                {{ contact.address }}
+            </p>
+            <a class="contact-map" target="blank" href="{{ contact.map_link }}">Google Map</a>
+        </div>
+        <div class="contact-tel">
+            <h4 class="sec-subtitle contact-title">Telephone & Fax Number</h4>
+            <p class="contact-details">
+                <b>TEL.</b>{{ contact.telephone }}
+                <b>FAX.</b>{{ contact.fax }}
+            </p>
         </div>
     </div>
 </div>
 {% endif %}
-<div class="row section">
-    <h3 class="section-title">contact us</h3>
-    <div class="section-content">
-        <div class="contact-wrapper">
-            Creative Interaction Design Lab.<br><br>
-            #219, Dept. of Industrial Design, KAIST<br>
-            291 Gwahangno, Yusong-gu, Daejeon 34141, Republic of Korea.<br><br>
-            <b>LAB. TEL</b> +82-42-350-4562<span></span>
-            <b>FAX</b> +82-42-350-4510
-            <img src="/static/res/img_map.png">
-        </div>
-    </div>
-</div>
 {% endblock %}

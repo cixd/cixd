@@ -5,7 +5,8 @@
 <script type="text/javascript" src="/static/js/projects-list.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        Folder.init();
+        Image.init();
+        Detail.init();
     });
 </script>
 {% endblock %}
@@ -15,52 +16,67 @@
 {% endblock %}
 
 {% block nav-projects %}sel{% endblock %}
-{% block nav-projectlist %}sel{% endblock %}
 
 {% block content %}
-<div class="row section">
-    <a class="section-back" href="/projects">project list</a>
-    <h3 class="section-title">{{ project.area.title }}</h3>
-    <div class="section-content">
-        <div class="section-group">
-            <div class="project-wrapper">
-                <h4 class="project-title">{{ project.title }}</h4>
-                <span class="project-term">{{ project.start_year }} - {{ project.end_year }}</span>
-                <p class="project-content">{{ project.content }}</p>
-            </div>
+<div class="sec-wrapper subnav-wrapper">
+    <ul class="subnav-list">
+        <li class="subnav-item">
+            <a href="/projects/list" class="">back to project list</a>
+        </li>
+        <li class="subnav-item">
+        <a href="#" class="sel">{{ project.area.title }}</a>
+        </li>
+    </ul>
+</div>
+<div class="sec-wrapper">
+    <h3 class="sec-title">{{ project.title }}</h3>
+    <div class="sec-content">
+        {% if project.sum_image %}
+        <div class="project-image folded-image">
+            <img src="{{ project.sum_image.url }}">
+            <button class="image-expand">
+                <span class="image-expand-left">\</span>
+                <span class="image-expand-right">/</span>
+            </button>
         </div>
-        <div class="section-group research-list">
+        {% endif %}
+        <span class="project-term">{{ project.start_year }} - <span>{{ project.end_year }}</span></span>
+        <p class="project-abstract">{{ project.content }}</p>
+        <ul class="research-list">
             {% for research in project.researches.all %}
-            <div class="research-wrapper">
-                <button class="research-title">{{ research.title }}</button>
+            <li class="research-item">
+                <h4 class="research-title sec-subtitle">{{ research.title }}</h4>
                 <a class="research-link" href="{{ research.url }}">{{ research.paper }}</a>
                 <div class="research-details">
-                    <h6 class="research-subtitle">abstract</h6>
-                    <p class="research-content">{{ research.abstract }}</p>
+                    {% if research.abstract %}
+                    <h5 class="research-subtitle">Abstract</h5>
+                    <p class="research-abstract">{{ research.abstract }}</p>
+                    {% endif %}
                     {% if research.images.all %}
-                        <h6 class="research-subtitle">images</h6>
+                    <h5 class="research-subtitle">Image</h5>
                         {% for image in research.images.all %}
-                        <img class="research-image" src="{{ image.image.url }}">
-                        <p class="research-caption">{{ image.caption }}</p>
+                        <div class="research-image folded-image">
+                            <img src="{{ image.image.url }}">
+                            <button class="image-expand">
+                                <span class="image-expand-left">\</span>
+                                <span class="image-expand-right">/</span>
+                            </button>
+                        </div>
+                        <p class="research-image-caption">{{ image.caption }}</p>
                         {% endfor %}
                     {% endif %}
                     {% if research.videos.all %}
-                        <h6 class="research-subtitle">videos</h6>
+                    <h5 class="research-subtitle">Video</h5>
                         {% for video in research.videos.all %}
-                        <a class="research-video-link" href="{{ video.url }}">original link for the lower video</a>
-                        <iframe title="YouTube video player" class="youtube-player" type="text/html" width="720" height="400" src="{{ video.url|embed }}" frameborder="0" allowfullscreen></iframe>
-                        <p class="research-caption">{{ video.caption }}</p>
+                        <iframe title="YouTube video player" class="research-video" type="text/html" src="{{ video.url|embed }}" frameborder="0" allowfullscreen></iframe>
+                        <p class="research-video-caption">{{ video.caption }}</p>
                         {% endfor %}
                     {% endif %}
-                    {% if research.funding %}
-                        <h6 class="research-subtitle">funding</h6>
-                        <p class="research-funding">{{ research.funding }}</p>
-                    {% endif %}
                 </div>
-            </div>
+                <button type="button" class="research-more">See Details</button>
+            </li>
             {% endfor %}
-        </div>
+        </ul>
     </div>
 </div>
 {% endblock %}
-

@@ -1,86 +1,60 @@
-.section-title{
-    text-transform: none;
-}
-
 /*
- * Members list
+ * Members
  */
 
-.members-list{
-    display: block;
-    width: 100%;
-    padding: 0;
-}
-
 .member-item{
-    display: block;
     width: 100%;
-    height: 190px;
-    padding: 0;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.member-item:hover img{
-    opacity: 1;
+.member-item:last-child{
+    margin-bottom: 0;
 }
 
 .member-image{
-    width: calc(30% - 15px);
-    height: 100%;
-    margin-left: 15px;
-    background: #cfcfcf;
+    width: 150px;
+    height: 150px;
     float: left;
-    overflow: hidden;
-    position: relative;
-}
-
-.member-image-wrapper{
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -250px;
-}
-
-.member-image img{
-    height: 50%;
-    margin: 0 auto;
-    display: block;
-    margin-top: 125px;
-    opacity: 0.7;
 }
 
 .member-info{
-    width: calc(70% - 15px);
-    height: 100%;
-    background: #fff;
     float: left;
-    padding: 25px 15px;
+    margin-left: 20px;
+    margin-top: 5px;
+    height: 140px;
+    width: 600px;
+    position: relative;
 }
 
 .member-name{
     font-size: 20px;
-    line-height: 14px;
     color: #595959;
     font-weight: 600;
-    text-transform: uppercase;
+    font-style: italic;
 }
 
 .member-name span{
-    color: #f78364;
-    margin-right: 8px;
-    font-weight: 600;
-    text-transform: none;
+    font-size: 16px;
+    color: #a6a6a6;
+}
+
+.member-name::before{
+    display: block;
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: #28d5ae;
+    margin-top: 4px;
+    margin-bottom: 3px;
 }
 
 .member-email{
-    font-size: 16px;
-    line-height: 15px;
-    color: #595959;
-    margin-top: 8px;
-    margin-bottom: 22px;
+    display: block;
+    font-size: 15px;
+    color: #737373;
+    font-weight: 600;
+    font-style: italic;
+    margin-top: -1px;
 }
 
 .member-email::after{
@@ -88,13 +62,20 @@
     content: "";
     width: 15px;
     height: 2px;
-    background: #00cbb5;
-    margin-top: 25px;
+    background: #d9d9d9;
+    margin-top: 16px;
 }
 
 .member-degree{
-    font-size: 14px;
-    line-height: 12px;
-    color: #8c8c8c;
-    margin-bottom: 8px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    color: #808080;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.member-degree span{
+    color: #a0a0a0;
 }

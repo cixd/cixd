@@ -1,0 +1,32 @@
+.article-date{
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: #28d5ae;
+    margin-top: -5px;
+}
+
+.article-image-list{
+    width: 100%;
+    margin-top: 26px;
+}
+
+.article-image{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.article-image:first-child{
+    margin-bottom: 0;
+}
+
+.article-image img{
+    width: 100%;
+}
+
+.article-content{
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #595959;
+}

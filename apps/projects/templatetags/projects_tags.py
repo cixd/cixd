@@ -5,5 +5,17 @@ def embed(value):
 
     return link
 
+def recent(value):
+    topics = value[:3]
+
+    return topics
+
+def more(value):
+    topics = value[3:]
+
+    return topics
+
 register = template.Library()
 register.filter('embed', embed)
+register.filter('recent', recent)
+register.filter('more', more)

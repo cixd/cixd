@@ -8,41 +8,60 @@
 {% endblock %}
 
 {% block nav-projects %}sel{% endblock %}
-{% block nav-researchgrants %}sel{% endblock %}
 
 {% block content %}
-<div class="row section">
-    <h3 class="section-title">government / kaist sponsored</h3>
-    <div class="section-content">
+<div class="sec-wrapper subnav-wrapper">
+    <ul class="subnav-list">
+        <li class="subnav-item">
+            <a href="/projects/list" class="">project list</a>
+        </li>
+        <li class="subnav-item">
+            <a href="/projects/grants" class="sel">research grants</a>
+        </li>
+    </ul>
+</div>
+<div class="sec-wrapper">
+    <h3 class="sec-title">Government / KAIST Sponsored</h3>
+    <div class="sec-content">
         <ul class="grant-list">
             {% for grant in grants_gov %}
             <li class="grant-item">
-                {% if grant.url %}<a class="grant-url" href="{{ grant.url }}">{% endif %}
-                <h5 class="grant-title">{{ grant.title }}</h5>
                 <div class="grant-info">
+                    <span class="grant-date">{{ grant.start_year }} - {{ grant.end_year }} / sponsored by </span>
                     <span class="grant-sponsor">{{ grant.sponsor_name }}</span>
-                    <span class="grant-date">{{ grant.start_year }} - {{ grant.end_year }}</span>
                 </div>
-                {% if grant.url %}</a>{% endif %}
+                <h5 class="grant-title">
+                    {% if grant.url %}
+                        <a href="{{ grant.url }}">{{ grant.title }}</a>
+                    {% else %}
+                        {{ grant.title }}
+                    {% endif %}
+                </h5>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
-<div class="row section">
-    <h3 class="section-title">corporation sponsored</h3>
-    <div class="section-content">
-            {% for grant in grants_cor %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Corporation Sponsored</h3>
+    <div class="sec-content">
+        <ul class="grant-list">
+            {% for grant in grants_gov %}
             <li class="grant-item">
-                {% if grant.url %}<a class="grant-url" href="{{ grant.url }}">{% endif %}
-                <h5 class="grant-title">{{ grant.title }}</h5>
                 <div class="grant-info">
+                    <span class="grant-date">{{ grant.start_year }} - {{ grant.end_year }} / sponsored by </span>
                     <span class="grant-sponsor">{{ grant.sponsor_name }}</span>
-                    <span class="grant-date">{{ grant.start_year }} - {{ grant.end_year }}</span>
                 </div>
-                {% if grant.url %}</a>{% endif %}
+                <h5 class="grant-title">
+                    {% if grant.url %}
+                        <a href="{{ grant.url }}">{{ grant.title }}</a>
+                    {% else %}
+                        {{ grant.title }}
+                    {% endif %}
+                </h5>
             </li>
             {% endfor %}
+        </ul>
     </div>
 </div>
 {% endblock %}

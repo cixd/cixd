@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<script type="text/javascript" src="/static/js/publication-index.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        Title.init();
+    });
+</script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/css/publication-index.css">
+{% endblock %}
+
+{% block nav-publication %}sel{% endblock %}
+
+{% block content %}
+{% for ctg in ctgs %}
+{% if ctg.publics.all %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">{{ ctg.name }}</h3>
+    <div class="sec-content">
+        <h4 class="sec-subtitle sub-int">International</h4>
+        <ul class="pub-list">
+        {% for pub in ctg.publics.all %}
+            {% if pub.scope == "INT" %}
+            <li class="pub-item">
+                {% if pub.url %}
+                <a href="{{ pub.url }}">{{ pub.title|escape }}</a>
+                {% else %}
+                <a class="pub-nourl">{{ pub.title|escape }}</a>
+                {% endif %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        <h4 class="sec-subtitle sub-dom">Domestic</h4>
+        <ul class="pub-list">
+        {% for pub in ctg.publics.all %}
+            {% if pub.scope == "DOM" %}
+            <li class="pub-item">
+                {% if pub.url %}
+                <a href="{{ pub.url }}">{{ pub.title|escape }}</a>
+                {% else %}
+                <a class="pub-nourl">{{ pub.title|escape }}</a>
+                {% endif %}
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}

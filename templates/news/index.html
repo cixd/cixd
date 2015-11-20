@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block script %}
+<script type="text/javascript" src="/static/js/news-index.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        View.init();
+    });
+</script>
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/css/news-list.css">
+{% endblock %}
+
+{% block nav-news %}sel{% endblock %}
+
+{% block content %}
+<div class="sec-wrapper subnav-wrapper">
+    <ul class="subnav-list">
+        <li class="subnav-item">
+            <button type="button" class="btn-grid-view sel">grid view</a>
+        </li>
+        <li class="subnav-item">
+            <button type="button" class="btn-list-view">list view</a>
+        </li>
+    </ul>
+</div>
+{% for y in years %}
+{% if y.list %}
+<div class="sec-wrapper sec-news">
+    <h3 class="sec-title">{{ y.year }}</h3>
+    <div class="sec-content">
+        <ul class="news-list grid-view">
+            {% for article in y.list %}
+            <li class="news-item">
+                <a class="news-link" href="/news/list/{{ article.id }}">
+                    <div class="news-thumbnail">
+                        {% if article.thumbnail %}
+                        <img src="{{ article.thumbnail.url }}">
+                        {% else %}
+                        <img src="/static/res/img_no_240x160.png">
+                        {% endif %}
+                    </div>
+                    <div class="news-details">
+                        <div class="news-date">{{ article.date|date:"F d, Y" }}</div>
+                        <div class="news-title">{{ article.title }}</div>
+                        <div class="news-content">{{ article.content|safe }}</div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,40 @@
+.pub-list{
+    margin-top: 4px;
+}
+
+.pub-item{
+    margin-top: 7px;
+}
+
+.pub-item a{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #666;
+}
+
+.pub-item a span{
+    font-weight: 600;
+    font-style: italic;
+    color: #28d5ae;
+}
+
+.pub-item a:hover span{
+    color: #ec8274;
+}
+
+.pub-item a.pub-nourl:hover span{
+    color: #28d5ae;
+}
+
+.sub-dom{
+    margin-top: 26px;
+}
+
+.sec-wrapper{
+    margin-top: 17px;
+}
+
+.sec-wrapper:first-child{
+    margin-top: 25px;
+}

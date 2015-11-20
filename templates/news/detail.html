@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block script %}
+{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="/static/css/news-detail.css">
+{% endblock %}
+
+{% block nav-news %}sel{% endblock %}
+
+{% block content %}
+<div class="sec-wrapper subnav-wrapper">
+    <ul class="subnav-list">
+        <li class="subnav-item">
+            <a href="/news/list">back to news list</a>
+        </li>
+    </ul>
+</div>
+<div class="sec-wrapper">
+    <h3 class="sec-title">{{ article.title }}</h3>
+    <div class="sec-content">
+        <div class="article-date">{{ article.date|date:"F d, Y" }}</div>
+        {% if article.images.all %}
+        <ul class="article-image-list">
+            {% for image in article.images.all %}
+            <li class="article-image">
+                <img src="{{ image.image.url }}">
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="article-content">
+            {{ article.content|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

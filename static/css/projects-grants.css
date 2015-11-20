@@ -2,51 +2,32 @@
  * Grant list
  */
 
-.grant-list{
-    display: block;
-    width: 100%;
-    padding: 0 15px;
-}
-
 .grant-item{
-    display: block;
-    width: 100%;
-    padding: 25px 15px 20px 15px;
-    background: #fff;
+    margin-top: -7px;
+    margin-bottom: 16px;
 }
 
-.grant-url{
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.grant-url:hover .grant-title{
-    color: #f78364;
-}
-
-.grant-title{
-    color: #595959;
-    font-size: 20px;
-    line-height: 20px;
-    padding: 0;
-    margin: 0;
-    margin-top: -4px;
-}
-
-.grant-info{
-    display: inline-block;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 16px;
-    margin-top: 7px;
-}
-
-.grant-sponsor{
-    color: #00cbb5;
-    margin-right: 8px;
+.grant-item:last-child{
+    margin-bottom: 0;
 }
 
 .grant-date{
-    color: #b2b2b2;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    color: #666;
+}
+
+.grant-sponsor{
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    color: #28d5ae;
+}
+
+.grant-title{
+    font-size: 16px;
+    font-weight: 600;
+    color: #595959;
+    margin-top: -2px;
 }

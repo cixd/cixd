@@ -3,10 +3,10 @@
 {% block script %}
 <script type="text/javascript" src="/static/js/main-index.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
+    /*$(document).ready(function(){
         PhotoBooth.init();
         News.init();
-    });
+    });*/
 </script>
 {% endblock %}
 
@@ -15,64 +15,54 @@
 {% endblock %}
 
 {% block content %}
-<div class="row section">
-    <h3 class="section-title">cixd photo booth</h3>
-    <div class="section-content">
-        <div class="photo-list-wrapper col-lg-12 col-md-12">
-            <button type="button" class="photo-list-prev">prev</button>
-            <ul class="photo-list">
-                {% for image in cover_images %}
-                <li class="photo-item" style="left: {{ forloop.counter0 }}00%">
-                    <h5 class="photo-item-date">{{ image.date|date:"F d, Y" }}</h5>
-                    <img class="photo-item-image" src="{{ image.image.url }}">
-                </li>
-                {% endfor %}
-            </ul>
-            <button type="button" class="photo-list-next">next</button>
-        </div>
+<div class="sec-wrapper">
+    <h3 class="sec-title">CIxD Photo Booth</h3>
+    <div class="sec-content sec-photo">
+        <ul class="photo-list">
+            {% for image in cover_images %}
+            <li class="photo-item">
+                <img class="photo-image" src="{{ image.image.url }}">
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="button" class="photo-prev">prev</button>
+        <button type="button" class="photo-next active">next</button>
     </div>
 </div>
-<div class="row section">
-    <h3 class="section-title">recent news</h3>
-    <div class="section-content">
-        <div class="news-list-wrapper">
-            <button type="button" class="news-list-prev">prev</button>
-            <ul class="news-list">
-                {% for article in news_articles %}
-                <li class="news-item">
-                    <a class="news-link" href="/news/{{ article.id }}">
-                        {% if article.images.all %}
-                        <div class="news-item-image">
-                            {% with image=article.images.all|first %}
-                            <img src="{{ image.image.url }}">
-                            {% endwith%}
-                        </div>
+<div class="sec-wrapper">
+    <h3 class="sec-title">Recent News</h3>
+    <div class="sec-content sec-news">
+        <ul class="news-list">
+            {% for article in news_articles %}
+            <li class="news-item">
+                <a class="news-link" href="/news/{{ article.id }}">
+                    <div class="news-thumbnail">
+                        {% if article.thumbnail %}
+                        <img src="{{ article.thumbnail.url }}">
                         {% else %}
-                        <div class="news-item-noimage">
-                            <img src="/static/res/img_no_image.png">
-                        </div>
+                        <img src="/static/res/img_no_240x160.png">
                         {% endif %}
-                        <div class="news-item-details">
-                            <div class="news-item-date">{{ article.date|date:"F d, Y" }}</div>
-                            <div class="news-item-content">{{ article.title }}</div>
-                        </div>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-            <button type="button" class="news-list-next">next</button>
-        </div>
+                    </div>
+                    <div class="news-details">
+                        <div class="news-date">{{ article.date|date:"F d, Y" }}</div>
+                        <div class="news-title">{{ article.title }}</div>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
-<div class="row section">
-    <h3 class="section-title">our projects</h3>
-    <div class="section-content">
+<div class="sec-wrapper project-wrapper">
+    <h3 class="sec-title">Our Projects</h3>
+    <div class="sec-content sec-project">
         <ul class="project-list">
             {% for area in areas %}
-            <li class="col-lg-5 col-md-5 project-item">
-                <h4 class="project-item-title">{{ area.title }}</h4>
-                <p class="project-item-note">{{ area.content }}</p>
-                <a class="project-item-more" href="/projects#{{ area.title|slugify }}">more</a>
+            <li class="project-item">
+                <h4 class="sec-subtitle project-title">{{ area.title }}</h4>
+                <p class="project-note">{{ area.content }}</p>
+                <a class="project-more" href="/projects#{{ area.title|slugify }}">more</a>
+
             </li>
             {% endfor %}
         </ul>

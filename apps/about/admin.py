@@ -18,8 +18,13 @@ class OfferAdmin(admin.ModelAdmin):
     list_display = ('id', 'content',)
     list_display_links = ('id', 'content',)
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('id', 'building', 'address',)
+    list_display_links = ('id', 'building', 'address')
+
 # Register Admins
 
 admin.site.register(Introduction, IntroductionAdmin)
 admin.site.register(Pursuit, PursuitAdmin)
 admin.site.register(Offer, OfferAdmin)
+admin.site.register(Contact, ContactAdmin)

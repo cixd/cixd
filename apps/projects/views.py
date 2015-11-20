@@ -11,9 +11,8 @@ def index(request):
 
     return render(request, 'projects/index.html', qs)
 
-def list(request, name):
-    title = name.lower()
-    project = Project.objects.get(title__icontains=title)
+def list(request, _id):
+    project = Project.objects.get(id=_id)
 
     qs = {
         "project": project

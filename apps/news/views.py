@@ -1,20 +1,30 @@
 from django.shortcuts import render
-from apps.main.models import CoverImage
+from apps.news.models import Article
+from datetime import date
 
-def index(request):
-    cover_images = CoverImage.objects.exclude(order=0).order_by('date');
+def list(request):
+    s_year = 2008
+    e_year = date.today().year
+
+    years = []
+
+    for y in reversed(range(s_year, e_year + 1)):
+        years.append({
+            "year": y,
+            "list": Article.objects.filter(date__year=y)
+        })
 
     qs = {
-        "cover_images": []
+        "years": years
     }
 
-    for image in cover_images:
-        q = {
-            "date": image.date.strftime("%B %d, %Y"),
-            "title": image.title,
-            "url": image.image.url
-        }
+    return render(request, 'news/index.html', qs)
 
-        qs["cover_images"].append(q)
+def detail(request, _id):
+    article = Article.objects.get(id=_id)
 
-    return render(request, 'main/index.html', qs)
+    qs = {
+        "article": article
+    }
+
+    return render(request, 'news/detail.html', qs)

@@ -1,33 +1,38 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from django.conf import settings
 import os, datetime
 
-class Publication(models.Model):
-    PUBLISHTO = [
-        ("JOUR", "Journal"),
-        ("CONF", "Conference"),
-    ]
+class Category(models.Model):
+    order = models.IntegerField(default=0, help_text="Publication 카테고리의 순서를 정해주세요. 숫자가 작을수록 위로 올라갑니다.")
+    name = models.CharField(max_length=200, help_text="Publication 카테고리의 이름을 적어주세요.")
 
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+        ordering = ['order', 'name']
+
+    def __unicode__(self):
+        return '%s' % (self.name)
+
+class Publication(models.Model):
     SCOPE = [
         ("INT", "International"),
         ("DOM", "Domestic"),
     ]
 
-    publish_to = models.CharField(max_length=4, choices=PUBLISHTO)
+    category = models.ForeignKey(Category, null=True, blank=True, related_name='publics')
     scope = models.CharField(max_length=3, choices=SCOPE)
-    title = models.CharField(max_length=300)
+    title = models.TextField()
     date = models.DateField(default=datetime.date.today)
-    url = models.URLField()
+    url = models.URLField(null=True, blank=True)
 
     class Meta:
-        verbose_name = "Journals & Conferences"
-        verbose_name_plural = "Journals & Conferences"
+        verbose_name = "Publication"
+        verbose_name_plural = "Publications"
+        ordering = ['-date', 'title']
 
     def __unicode__(self):
         return '%s' % (self.title)
 
-class Other(models.Model):
-    pass
-
-class Award(models.Model):
-    pass

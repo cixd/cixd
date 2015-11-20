@@ -1,6 +1,13 @@
 {% extends "layout.html" %}
+{% load projects_tags %}
 
 {% block script %}
+<script type="text/javascript" src="/static/js/projects-index.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        Popup.init();
+    });
+</script>
 {% endblock %}
 
 {% block stylesheet %}
@@ -8,40 +15,47 @@
 {% endblock %}
 
 {% block nav-projects %}sel{% endblock %}
-{% block nav-projectlist %}sel{% endblock %}
 
 {% block content %}
-<div class="row section">
-    <h3 class="section-title">our research area</h3>
-    <div class="section-content">
-        <ul class="area-list">
-            {% for area in areas %}
-            <li class="area-item" id="{{ area.title|slugify }}">
-                <h4 class="area-title">{{ area.title }}</h4>
-                <p class="area-content">{{ area.content }}</p>
-                <h4 class="area-subtitle">related projects</h4>
-                <ul class="project-list">
-                    {% for project in area.projects.all %}
-                    <li class="project-item">
-                        <a href="/projects/list/{{ project.title|lower }}">
-                            <div class="project-image-wrapper">
-                            {% if project.thumbnail %}
-                                <img class="project-image" src="{{ project.thumbnail.url }}">
-                            {% else %}
-                                {% with research=project.researches.all|first %}
-                                <img class="project-image" src="{{ research.images.all|first }}">
-                                {% endwith %}
-                            {% endif %}
-                            </div>
-                            <h5 class="project-title">{{ project.title }}</h5>
-                            <p class="project-content">{{ project.content }}</p>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
+<div class="sec-popup">
+    <p class="popup-content"></p>
+</div>
+<div class="sec-wrapper subnav-wrapper">
+    <ul class="subnav-list">
+        <li class="subnav-item">
+            <a href="/projects/list" class="sel">project list</a>
+        </li>
+        <li class="subnav-item">
+            <a href="/projects/grants" class="">research grants</a>
+        </li>
+    </ul>
+</div>
+{% for area in areas %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">{{ area.title }}</h4>
+    <div class="sec-content">
+        <p class="area-content">{{ area.content }}</p>
+        <h4 class="sec-subtitle">Related Research Topics</h4>
+        <ul class="topic-list">
+            {% for project in area.projects.all %}
+            <li class="topic-item">
+                <a href="/projects/list/{{ project.id }}">
+                    {% if project.thumbnail %}
+                    <img class="topic-image" src="{{ project.thumbnail.url }}">
+                    {% else %}
+                    <img class="topic-image" src="/static/res/img_no_240x160.png">
+                    {% endif %}
+                    <span class="topic-year">{{ project.start_year }} - {{ project.end_year }}</span>
+                    <h5 class="topic-title">{{ project.title }}</h5>
+                </a>
+                <div class="topic-details">
+                    <button type="button" class="topic-show">...</button>
+                    <p class="topic-content">{{ project.content }}</p>
+                </div>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
+{% endfor %}
 {% endblock %}

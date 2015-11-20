@@ -1,0 +1,48 @@
+{% extends "admin/edit_inline/tabular.html" %}
+
+{% block extrascript %}
+<script type="text/javascript">
+    (function($){
+        function updateOrders(){
+            var orders = $('#authors-group .vIntegerField');
+
+            $.each(orders, function(i, order){
+                var num = $(order).attr('id').split("-")[1];
+
+                if(num != "__prefix__"){
+                    $(order).val(i + 1);
+                }
+            });
+        }
+
+        /*
+         * initialize
+         */
+
+        updateOrders();
+
+        /*
+         * add function
+         */
+
+        var add = $('#authors-group a').last();
+
+        $(add).click(function(){
+            updateOrders();
+            updateRemoves();
+        });
+
+        /*
+         * remove function
+         */
+
+        function updateRemoves(){
+            var remove = $('#authors-group .inline-deletelink').last();
+
+            $(remove).click(function(){
+                updateOrders();
+            });
+        }
+    })(django.jQuery);
+</script>
+{% endblock %}

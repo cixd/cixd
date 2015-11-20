@@ -8,86 +8,97 @@
 {% endblock %}
 
 {% block nav-people %}sel{% endblock %}
-{% block nav-people-members %}sel{% endblock %}
 
 {% block content %}
-<div class="row section">
-    <h3 class="section-title">PROFESSOR</h3>
-    <div class="section-content">
-        <ul class="members-list">
+<div class="sec-wrapper subnav-wrapper">
+    <ul class="subnav-list">
+        <li class="subnav-item">
+            <a href="/people/members" class="sel">members</a>
+        </li>
+        <li class="subnav-item">
+            <a href="/people/alumni" class="">alumni</a>
+        </li>
+    </ul>
+</div>
+{% if professors|length != 0 %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Professor</h3>
+    <div class="sec-content sec-professor">
+        <ul class="member-list">
+            {% for prof in professors %}
             <li class="member-item">
-                <div class="member-image">
-                    <div class="member-image-wrapper">
-                        {% if professor.image %}
-                        <img src="{{ professor.image.url }}">
-                        {% else %}
-                        <img src="/static/res/img_no_image.png">
-                        {% endif %}
-                    </div>
-                </div>
+                {% if prof.image %}
+                <img class="member-image" src="{{ prof.image.url }}">
+                {% else %}
+                <img class="member-image" src="/static/res/img_no_150x150.png">
+                {% endif %}
                 <div class="member-info">
-                    <div class="member-name">{{ professor.name_en }}</div>
-                    <div class="member-email">{{ professor.email }}</div>
-                    {% for degree in professor.degrees.all %}
-                    <div class="member-degree">{{ degree.degree }}, {{ degree.department }}, {{ degree.university }}</div>
-                    {% endfor %}
+                    <h4 class="member-name" title="{{ prof.name_kr }}">{{ prof.name_en }}</h4>
+                    <i class="member-email">{{ prof.email }}</i>
+                    <p class="member-degree">
+                        {% for degree in prof.degrees.all %}
+                        {{ degree.degree }}, {{ degree.department }}, {{ degree.university }} <!--<span>({{ degree.year }})</span>--><br>
+                        {% endfor %}
+                    </p>
                 </div>
             </li>
+            {% endfor %}
         </ul>
     </div>
 </div>
-<div class="row section">
-    <h3 class="section-title">Ph.D. STUDENTS</h3>
-    <div class="section-content">
-        <ul class="members-list">
+{% endif %}
+{% if phd_students|length != 0 %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Ph.D. Students</h3>
+    <div class="sec-content sec-phd-student">
+        <ul class="member-list">
             {% for student in phd_students %}
             <li class="member-item">
-                <div class="member-image">
-                    <div class="member-image-wrapper">
-                        {% if student.image %}
-                        <img src="{{ student.image.url }}">
-                        {% else %}
-                        <img src="/static/res/img_no_image.png">
-                        {% endif %}
-                    </div>
-                </div>
+                {% if student.image %}
+                <img class="member-image" src="{{ student.image.url }}">
+                {% else %}
+                <img class="member-image" src="/static/res/img_no_150x150.png">
+                {% endif %}
                 <div class="member-info">
-                    <div class="member-name">{{ student.name_en }}</div>
-                    <div class="member-email">{{ student.email }}</div>
-                    {% for degree in student.degrees.all %}
-                    <div class="member-degree">{{ degree.degree }}, {{ degree.where }}</div>
-                    {% endfor %}
+                    <h4 class="member-name" title="{{ student.name_kr }}">{{ student.name_en }}<span> ({{ student.year }})</span></h4>
+                    <i class="member-email">{{ student.email }}</i>
+                    <p class="member-degree">
+                        {% for degree in student.degrees.all %}
+                        {{ degree.degree }}, {{ degree.department }}, {{ degree.university }} <!--<span>({{ degree.year }})</span>--><br>
+                        {% endfor %}
+                    </p>
                 </div>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
-<div class="row section">
-    <h3 class="section-title">MASTER STUDENTS</h3>
-    <div class="section-content">
-        <ul class="members-list">
+{% endif %}
+{% if m_students|length != 0 %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Master's Students</h3>
+    <div class="sec-content sec-m-student">
+        <ul class="member-list">
             {% for student in m_students %}
             <li class="member-item">
-                <div class="member-image">
-                    <div class="member-image-wrapper">
-                        {% if student.image %}
-                        <img src="{{ student.image.url }}">
-                        {% else %}
-                        <img src="/static/res/img_no_image.png">
-                        {% endif %}
-                    </div>
-                </div>
+                {% if student.image %}
+                <img class="member-image" src="{{ student.image.url }}">
+                {% else %}
+                <img class="member-image" src="/static/res/img_no_150x150.png">
+                {% endif %}
                 <div class="member-info">
-                    <div class="member-name">{{ student.name_en }}</div>
-                    <div class="member-email">{{ student.email }}</div>
-                    {% for degree in student.degrees.all %}
-                    <div class="member-degree">{{ degree.degree }}, {{ degree.where }}</div>
-                    {% endfor %}
+                    <h4 class="member-name" title="{{ student.name_kr }}">{{ student.name_en }}<span> ({{ student.year }})</span></h4>
+                    <i class="member-email">{{ student.email }}</i>
+                    <p class="member-degree">
+                        {% for degree in student.degrees.all %}
+                        {{ degree.degree }}, {{ degree.department }}, {{ degree.university }} <!--<span>({{ degree.year }})</span>--><br>
+                        {% endfor %}
+                    </p>
                 </div>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
+{% endif %}
 {% endblock %}

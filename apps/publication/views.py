@@ -1,13 +1,11 @@
 from django.shortcuts import render
-from apps.publication.models import Publication
+from apps.publication.models import Category, Publication
 
 def index(request):
-    pubs_jour = Publication.objects.filter(publish_to="JOUR").order_by('date')
-    pubs_conf = Publication.objects.filter(publish_to="CONF").order_by('date')
+    ctgs = Category.objects.all()
 
     qs = {
-        "pubs_jour": pubs_jour,
-        "pubs_conf": pubs_conf
+        "ctgs": ctgs
     }
 
-    return render(request, 'publication/journal.html', qs)
+    return render(request, 'publication/index.html', qs)

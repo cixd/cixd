@@ -8,42 +8,63 @@
 {% endblock %}
 
 {% block nav-people %}sel{% endblock %}
-{% block nav-people-alumni %}sel{% endblock %}
 
 {% block content %}
-<div class="row section">
-    <h3 class="section-title">Ph.D. DEGREE</h3>
-    <div class="section-content">
+<div class="sec-wrapper subnav-wrapper">
+    <ul class="subnav-list">
+        <li class="subnav-item">
+            <a href="/people/members" class="">members</a>
+        </li>
+        <li class="subnav-item">
+            <a href="/people/alumni" class="sel">alumni</a>
+        </li>
+    </ul>
+</div>
+{% if phds|length != 0 %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Ph.D. Degree</h3>
+    <div class="sec-content sec-phd-degree">
         <ul class="alumni-list">
-            {% for phd in phds %}
+            {% for alumni in phds %}
             <li class="alumni-item">
                 <div class="alumni-info">
-                    <div class="alumni-name">{{ phd.name_en }}</div>
-                    <div class="alumni-where">{{ phd.current }}</div>
-                    {% for thesis in phd.theses.all %}
-                    <div class="alumni-thesis">
-                        <a href="{{ thesis.url }}" target="blank">{{ thesis.title }}</a>
-                    </div>
-                    {% endfor %}
+                    <h4 class="alumni-name" title="{{ alumni.name_kr }}">
+                        {{ alumni.name_en }}
+                        <span> ({{ alumni.year }})</span>
+                        <i class="alumni-company">- {{ alumni.current }}</i>
+                    </h4>
+                    {% if alumni.papers.all|length != 0 %}
+                        {% for paper in alumni.papers.all %}
+                        <a class="alumni-thesis" target="blank" href="{{ paper.url }}">{{ paper.title }}</a>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
-<div class="row section">
-    <h3 class="section-title">Master's DEGREE</h3>
-    <div class="section-content">
+{% endif %}
+{% if masters|length != 0 %}
+<div class="sec-wrapper">
+    <h3 class="sec-title">Master Degree</h3>
+    <div class="sec-content sec-m-degree">
         <ul class="alumni-list">
-            {% for master in masters %}
+            {% for alumni in masters %}
             <li class="alumni-item">
                 <div class="alumni-info">
-                    <div class="alumni-name">{{ master.name_en }}</div>
-                    <div class="alumni-where">{{ master.current }}</div>
+                    <h4 class="alumni-name" title="{{ alumni.name_kr }}">
+                        {{ alumni.name_en }}
+                        <span> ({{ alumni.year }})</span>
+                        {% if alumni.current %}
+                        <i class="alumni-company">- {{ alumni.current }}</i>
+                        {% endif %}
+                    </h4>
                 </div>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
+{% endif %}
 {% endblock %}

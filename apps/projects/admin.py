@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.forms import BaseInlineFormSet
 from apps.projects.models import *
 
 class AreaAdmin(admin.ModelAdmin):
@@ -9,15 +10,20 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class AuthorInline(admin.TabularInline):
     model = Author
+    extra = 1
+    ordering = ('order',)
+    template = "admin/projects/research/edit_inline/tabular.html"
 
-class ImageInline(admin.TabularInline):
+class ImageInline(admin.StackedInline):
     model = Image
+    extra = 1
 
-class VideoInline(admin.TabularInline):
+class VideoInline(admin.StackedInline):
     model = Video
+    extra = 1
 
 class ResearchAdmin(admin.ModelAdmin):
-    list_display = ('title', 'date', 'author', 'project',)
+    list_display = ('title', 'date', 'project',)
     inlines = [
         AuthorInline,
         ImageInline,

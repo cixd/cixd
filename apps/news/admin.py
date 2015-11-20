@@ -5,6 +5,7 @@ from django import forms
 
 class ImageInline(admin.TabularInline):
     model = Image
+    extra = 1
 
 class ArticleAdminForm(forms.ModelForm):
     content = forms.CharField(widget=EditorWidget())
