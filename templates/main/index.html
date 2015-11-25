@@ -35,7 +35,7 @@
         <ul class="news-list">
             {% for article in news_articles %}
             <li class="news-item">
-                <a class="news-link" href="/news/{{ article.id }}">
+                <a class="news-link" href="/news/list/{{ article.id }}">
                     <div class="news-thumbnail">
                         {% if article.thumbnail %}
                         <img src="{{ article.thumbnail.url }}">
