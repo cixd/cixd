@@ -23,8 +23,8 @@ def list(request, _id):
 def grants(request):
     today = datetime.date.today()
 
-    grants_gov = Grant.objects.filter(sponsor="GOV", open_date__lte=today).order_by('start_year')
-    grants_cor = Grant.objects.filter(sponsor="COR", open_date__lte=today).order_by('start_year')
+    grants_gov = Grant.objects.filter(sponsor="GOV", open_date__lte=today).order_by('-start_year')
+    grants_cor = Grant.objects.filter(sponsor="COR", open_date__lte=today).order_by('-start_year')
 
     qs = {
         "grants_gov": grants_gov,

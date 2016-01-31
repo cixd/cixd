@@ -41,13 +41,13 @@ class Research(models.Model):
     title = models.CharField(max_length=500)
     paper = models.TextField(help_text="FULL CITATION 형식으로 적어주세요.")
     url = models.URLField(help_text="논문 링크를 적어주세요.")
-    date = models.DateField(default=datetime.date.today, help_text="Publication 날짜를 적어주세요.")
+    date = models.DateField(default=datetime.date.today, help_text="Publication 날짜를 적어주세요. (년도와 월만 정확히, 날짜는 1일로 맞춰주세요.)")
     abstract = models.TextField(null=True, blank=True, help_text="연구 논문의 abstract 혹은 연구의 요약 내용을 적어주세요.")
     funding = models.TextField(null=True, blank=True)
 
     class Meta:
-        verbose_name = "Research"
-        verbose_name_plural = "Researches"
+        verbose_name = "Related Publication"
+        verbose_name_plural = "Related Publications"
 
     def __unicode__(self):
         return '%s' % (self.title)

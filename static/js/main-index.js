@@ -11,8 +11,8 @@
 var PhotoBooth = {};
 
 PhotoBooth.init = function(){
-    this.prev = $('.photo-list-prev');
-    this.next = $('.photo-list-next');
+    this.prev = $('.photo-prev');
+    this.next = $('.photo-next');
 
     $(this.prev).hide();
     PhotoBooth.register();
