@@ -57,10 +57,12 @@
                         {% for image in research.images.all %}
                         <div class="research-image folded-image">
                             <img src="{{ image.image.url }}">
+                            <!--
                             <button class="image-expand">
                                 <span class="image-expand-left">\</span>
                                 <span class="image-expand-right">/</span>
                             </button>
+                            -->
                         </div>
                         <p class="research-image-caption">{{ image.caption }}</p>
                         {% endfor %}
