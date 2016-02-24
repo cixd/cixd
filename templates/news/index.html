@@ -45,7 +45,7 @@
                     <div class="news-details">
                         <div class="news-date">{{ article.date|date:"F d, Y" }}</div>
                         <div class="news-title">{{ article.title }}</div>
-                        <div class="news-content">{{ article.content|safe }}</div>
+                        <div class="news-content">{{ article.content|safe|striptags }}</div>
                     </div>
                 </a>
             </li>
