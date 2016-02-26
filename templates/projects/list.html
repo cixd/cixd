@@ -34,10 +34,12 @@
         {% if project.sum_image %}
         <div class="project-image folded-image">
             <img src="{{ project.sum_image.url }}">
+            <!--
             <button class="image-expand">
                 <span class="image-expand-left">\</span>
                 <span class="image-expand-right">/</span>
             </button>
+            -->
         </div>
         {% endif %}
         <span class="project-term">{{ project.start_year }} - <span>{{ project.end_year }}</span></span>
